@@ -1,6 +1,9 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
+    {{#if product }}
+      <meta name="product" content={{ JSON product }}
+    {{/if}}
     <title>{{ title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +21,13 @@
   </head>
   <body class="wrapper">
     <div class="main-body" id="root">
-
+        <h1 class="primary">{{ product.title }}</h1>
+        <div class="score">
+          <div class="rating">
+            <span class="value">{{ rating }}</span>
+            {{> starRating rating=rating }}
+          </div>
+        </div>
     </div>
   </body>
 </html>

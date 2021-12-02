@@ -1,3 +1,2 @@
-import './style.css'
-
-console.log('Vite working!')
+import './styles/main.css'
+import './styles/stars.css'

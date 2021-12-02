@@ -1,0 +1,38 @@
+:root {
+  --star-full: url(#starFull);
+  --star-empty: url(#starEmpty);
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.score .rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.score .rating .value {
+  font-size: 4.4rem;
+  font-weight: 400;
+}
+
+.star-icon path {
+  fill: var(--star-empty);
+  user-select: none;
+}
+
+.star-icon.selected path {
+  fill: var(--star-full);
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
