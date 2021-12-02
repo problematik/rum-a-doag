@@ -6,6 +6,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:3001/@react-refresh'
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => {}
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
     <script type="module" src="http://localhost:3001/@vite/client"></script>
     <script type="module" src="http://localhost:3001/main.js"></script>
   </head>
