@@ -1,0 +1,33 @@
+.reviews {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.9rem;
+}
+
+
+.review {
+  display: flex;
+  flex-direction: row;
+  gap: 2.9rem;
+  align-items: center;
+}
+
+.review .stars {
+  align-self: flex-start;
+}
+
+.review .body {
+  display: flex;
+  flex-direction: row;
+}
+
+.review .body .value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.review .body .text {
+  color: var(--light-gray);
+  font-weight: normal;
+}

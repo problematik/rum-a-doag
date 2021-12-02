@@ -28,6 +28,24 @@
             {{> starRating rating=rating }}
           </div>
         </div>
+        <hr class="divider"/>
+        {{#if reviews.length }}<h2 class="secondary">Reviews</h2>{{/if}}
+        <div class="reviews">
+          {{#if reviews.length }}
+            {{#each reviews }}
+              <div class="review">
+                <span class="stars">
+                  {{>starRating rating=rating }}
+                </span>
+                <span class="body">
+                  <span class="value">{{ rating }}</span>{{#if body }}<span class="text">, {{ body }}</span>{{/if}}
+                </span>
+              </div>
+            {{/each}}
+          {{else}}
+            No reviews yet.
+          {{/if}}
+        </div>
     </div>
   </body>
 </html>
