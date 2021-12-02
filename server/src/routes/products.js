@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { wrap } from './index.js'
 import { Product } from '../models/product.js'
+import { render } from '../utils/view.js'
 
 export const router = Router()
 
@@ -10,5 +11,6 @@ router.get('/:slug', wrap(async (req, res) => {
   if (!product) {
     return res.send(404)
   }
-  res.send(200)
+
+  render(res, { product: product.attrs, rating: 3, reviews: [] })
 }))
