@@ -36,4 +36,10 @@ export class BaseModel {
       .limit(1)
       .then(this._rowToClass.bind(this))
   }
+
+  static create (attrs) {
+    return this.db
+      .insert(attrs)
+      .then(this._rowToClass.bind(this))
+  }
 }
