@@ -34,10 +34,15 @@ body {
 
 .primary {
   font-size: 4.4rem;
+  font-weight: 700;
 }
 
 .secondary {
   font-size: 2.8rem;
+}
+
+.tertiary {
+  font-size: 2.4rem;
 }
 
 h1 {

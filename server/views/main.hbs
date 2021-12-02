@@ -27,6 +27,9 @@
             <span class="value">{{ rating }}</span>
             {{> starRating rating=rating }}
           </div>
+          <div>
+            <button id="add-review">Add review</button>
+          </div>
         </div>
         <hr class="divider"/>
         {{#if reviews.length }}<h2 class="secondary">Reviews</h2>{{/if}}
@@ -45,6 +48,19 @@
           {{else}}
             No reviews yet.
           {{/if}}
+        </div>
+
+        <div class="popup hidden">
+          <div class="body">
+            <div class="primary">What's your rating?</div>
+            <div class="tertiary">Rating</div>
+            {{> starRating editable=true rating=0 }}
+            <div class="tertiary">Review</div>
+            <textarea placeholder="Start typing..." rows="1"></textarea>
+            <div>
+              <button disabled>Submit review</button>
+            </div>
+          </div>
         </div>
     </div>
   </body>

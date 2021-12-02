@@ -1,0 +1,36 @@
+.popup.hidden {
+  display: none;
+}
+
+.popup {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.popup .body {
+  padding: 4.8rem 5.3rem;
+  background-color: var(--white);
+  border: 0.1rem solid var(--gray);
+  border-radius: 2rem;
+  min-width: 68rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.popup textarea {
+  width: 100%;
+}
+
+.popup-open {
+  overflow: hidden;
+}

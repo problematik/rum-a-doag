@@ -34,5 +34,21 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  gap: 0.5rem;
+}
+
+.star-rating .star-icon:not(:first-child) {
+  padding-right: 0.5rem;
+}
+
+.star-icon.editable {
+  cursor: pointer;
+}
+
+.star-rating.editable:hover .star-icon path {
+  fill: var(--star-empty);
+}
+
+.star-rating.editable .star-icon.editable:hover path,
+.star-icon.editable:hover ~ .star-icon path {
+  fill: var(--star-full);
 }

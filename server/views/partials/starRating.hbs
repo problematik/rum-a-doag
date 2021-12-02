@@ -1,7 +1,7 @@
-<span class="star-rating">
-  {{> star value=5 selected=(starSelected rating 4) }}
-  {{> star value=4 selected=(starSelected rating 3) }}
-  {{> star value=3 selected=(starSelected rating 2) }}
-  {{> star value=2 selected=(starSelected rating 1) }}
-  {{> star value=1 selected=(starSelected rating 0) }}
+<span class="star-rating{{#if editable }} editable{{/if}}">
+  {{> star value=5 selected=(starSelected rating 4) editable=editable }}
+  {{> star value=4 selected=(starSelected rating 3) editable=editable }}
+  {{> star value=3 selected=(starSelected rating 2) editable=editable }}
+  {{> star value=2 selected=(starSelected rating 1) editable=editable }}
+  {{> star value=1 selected=(starSelected rating 0) editable=editable }}
 </span>
