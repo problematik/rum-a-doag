@@ -1,3 +1,4 @@
+import { getProduct } from './src/utils'
 import './styles/main.css'
 import './styles/stars.css'
 import './styles/reviews.css'
@@ -52,7 +53,27 @@ function reviewStarClicked (selectedRating, $stars, updateRating) {
 function reviewSubmitClicked ($submitBtn, getSelectedRating, $reviewTextarea, e) {
   e.preventDefault()
   $submitBtn.disabled = true
-  const body = $reviewTextarea.value
-  const selectedRating = getSelectedRating()
-  window.alert(`Submitting ${selectedRating} with ${body}`)
+  const review = $reviewTextarea.value
+  const rating = getSelectedRating()
+  const product = getProduct()
+
+  fetch(`/products/${product.id}/review`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      review,
+      rating
+    })
+  }).then(res => {
+    $submitBtn.disabled = false
+    if (res.status < 300) {
+      window.alert('Review submitted! Thank you.')
+    } else if (res.status === 404) {
+      window.alert('The product does not exists')
+    } else {
+      window.alert('Request failed, please try again later.')
+    }
+  })
 }
