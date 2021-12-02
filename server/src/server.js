@@ -1,5 +1,7 @@
 import express from 'express'
 import { resolve } from 'path'
+import { router as fallbackRouter } from './routes/index.js'
+import { router as productsRouter } from './routes/products.js'
 
 const app = express()
 const port = process.env.PORT
@@ -7,9 +9,8 @@ const port = process.env.PORT
 app.set('view engine', 'hbs')
 app.set('views', resolve('./views'))
 
-app.get('/products/:slug', (req, res) => {
-  res.render('main')
-})
+app.use('/products', productsRouter)
+app.use('*', fallbackRouter)
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)
