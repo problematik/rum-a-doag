@@ -1,7 +1,12 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "migrate:make": "knex --knexfile ./knexfile.cjs migrate:make",
+    "migrate:up": "knex --knexfile ./knexfile.cjs migrate:latest",
+    "migrate:down": "knex --knexfile ./knexfile.cjs migrate:down",
+    "test": "yarn test:lint",
+    "test:lint": "cd ../ && yarn eslint ./server"
   },
   "nodemonConfig": {
     "execMap": {
