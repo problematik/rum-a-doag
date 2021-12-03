@@ -4,7 +4,7 @@ import { StarRating } from '../Rating'
 
 import './index.css'
 
-export function Popup ({ onSubmit }) {
+export function Popup ({ onSubmit, submitting }) {
   const [selectedRating, setSelectedRating] = useState(0)
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [review, setReview] = useState('')
@@ -27,7 +27,7 @@ export function Popup ({ onSubmit }) {
         <div className="tertiary">Review</div>
         <Textarea onChange={setReview} value={review} />
         <div>
-          <Button disabled={buttonDisabled} onClick={handleSubmitClicked}>Submit review</Button>
+          <Button disabled={buttonDisabled || submitting} onClick={handleSubmitClicked}>Submit review</Button>
         </div>
       </div>
     </div>
