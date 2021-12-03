@@ -30,3 +30,12 @@
 .popup-open {
   overflow: hidden;
 }
+
+@media screen and (max-width: 680px) {
+  .popup .body {
+    max-width: calc(100% - 2rem);
+    min-width: calc(100% - 2rem);
+    width: calc(100% - 2rem);
+    padding: 1rem;
+  }
+}

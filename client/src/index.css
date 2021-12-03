@@ -60,3 +60,9 @@ hr {
 hr.divider {
   margin: 6.9rem 0 4.1rem 0;
 }
+
+@media screen and (max-width: 580px) {
+  .wrapper {
+    grid-template-columns: 1rem calc(100% - 2rem) 1rem;
+  }
+}
