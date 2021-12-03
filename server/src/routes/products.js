@@ -1,10 +1,13 @@
 import { Router } from 'express'
+import bodyParser from 'body-parser'
 import { wrap } from './index.js'
 import { Product } from '../models/product.js'
 import { Review } from '../models/review.js'
 import { render } from '../utils/view.js'
 
 export const router = Router()
+
+router.use(bodyParser.json())
 
 router.get('/:slug', wrap(async (req, res) => {
   const { slug } = req.params

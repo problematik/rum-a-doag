@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import { resolve } from 'path'
 import { router as fallbackRouter } from './routes/index.js'
 import { router as productsRouter } from './routes/products.js'
@@ -10,7 +9,6 @@ const port = process.env.PORT
 
 app.set('view engine', 'hbs')
 app.set('views', resolve('./views'))
-app.use(bodyParser.json())
 
 initHbs()
 
