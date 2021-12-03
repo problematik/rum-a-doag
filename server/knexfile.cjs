@@ -1,6 +1,8 @@
 require('dotenv').config()
 
-const filename = process.env.DB_PATH
+const filename = process.env.NODE_ENV === 'test'
+  ? '/tmp/test-db.sqlite'
+  : process.env.DB_PATH
 
 module.exports = {
   client: 'sqlite3',
