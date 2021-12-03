@@ -3,6 +3,8 @@
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
     {{#if product }}
       <meta name="product" content="{{ JSON product }}">
+      <meta name="rating" content="{{ JSON rating }}">
+      <meta name="reviews" content="{{ JSON reviews }}">
     {{/if}}
     <title>{{ title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +19,7 @@
       window.__vite_plugin_react_preamble_installed__ = true
     </script>
     <script type="module" src="http://localhost:3001/@vite/client"></script>
-    <script type="module" src="http://localhost:3001/main.js"></script>
+    <script type="module" src="http://localhost:3001/main.jsx"></script>
   </head>
   <body class="wrapper">
     <div class="main-body" id="root">
