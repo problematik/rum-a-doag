@@ -7,3 +7,11 @@ function getMeta (name) {
 export function getProduct () {
   return getMeta('product')
 }
+
+export function getRating () {
+  return getMeta('rating')
+}
+
+export function getReviews () {
+  return getMeta('reviews')
+}
