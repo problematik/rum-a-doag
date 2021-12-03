@@ -43,5 +43,5 @@ router.post('/:id/review', wrap(async (req, res) => {
     return res.status(500).send({ error: 'Unable to submit review. Try again later' })
   }
 
-  res.send(201)
+  res.status(201).send({ id: review.attrs.id })
 }))
