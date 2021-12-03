@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "setup": "yarn setup:deps && yarn setup:env",
+    "setup:deps": "yarn install && (cd server && yarn) && (cd client && yarn)",
+    "setup:env": "cp -n .env.example .env",
+    "setup:db": "yarn db:migrate && yarn db:seed",
+    "db:migrate": "cd server && yarn migrate:up",
+    "db:seed": "cd server && yarn seed"
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
