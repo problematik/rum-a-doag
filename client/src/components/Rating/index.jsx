@@ -15,7 +15,7 @@ export function StarRating ({ editable, rating, onClick }) {
   rating = rating === '-' ? 0 : rating
   const starValues = [5, 4, 3, 2, 1]
   const className = cs('star-rating', {
-    editable: 'editable'
+    editable: editable
   })
 
   const handleClick = (value) => {

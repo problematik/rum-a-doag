@@ -14,14 +14,14 @@ export function Reviews ({ reviews }) {
 }
 
 function Review ({ review }) {
-  const { rating, reviews: userReview } = review
+  const { rating, review: userReview } = review
   return (
     <div className="review">
       <span className="stars">
         <StarRating rating={rating} />
       </span>
       <span className="body">
-        <span className="value">{{ rating }}</span>
+        <span className="value">{ rating }</span>
         { userReview ? <span className="text">, { userReview }</span> : null}
       </span>
     </div>
