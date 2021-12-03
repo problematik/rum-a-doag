@@ -13,16 +13,15 @@ router.get('/:slug', wrap(async (req, res) => {
     return res.send(404)
   }
 
+  const [reviews, rating] = await Promise.all([
+    product.reviews(),
+    product.getRating()
+  ])
+
   render(res, {
     product: product.attrs,
-    rating: 3,
-    reviews: [{
-      rating: 5,
-      body: 'ha'
-    }, {
-      rating: 1,
-      body: 'na'
-    }]
+    rating,
+    reviews: reviews.map(review => review.attrs)
   })
 }))
 
