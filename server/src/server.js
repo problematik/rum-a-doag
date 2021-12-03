@@ -1,10 +1,13 @@
 import express from 'express'
+import http from 'http'
 import { resolve } from 'path'
 import { router as fallbackRouter } from './routes/index.js'
 import { router as productsRouter } from './routes/products.js'
 import { init as initHbs } from './utils/view.js'
+import { start as startSocket } from './utils/io.js'
 
 const app = express()
+const server = http.createServer(app)
 const port = process.env.SERVER_PORT
 
 app.set('view engine', 'hbs')
@@ -15,6 +18,8 @@ initHbs()
 app.use('/products', productsRouter)
 app.use('*', fallbackRouter)
 
+startSocket(server)
+
 app.use((err, req, res, next) => {
   console.error(err.stack)
   let message = 'Something went wrong :/'
@@ -24,7 +29,7 @@ app.use((err, req, res, next) => {
   res.status(500).send(message)
 })
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server started on port ${port}`)
 }).on('error', err => {
   if (err.code === 'EADDRINUSE') {

@@ -4,6 +4,7 @@ import { wrap } from './index.js'
 import { Product } from '../models/product.js'
 import { Review } from '../models/review.js'
 import { render } from '../utils/view.js'
+import { emit } from '../utils/io.js'
 
 export const router = Router()
 
@@ -44,4 +45,7 @@ router.post('/:id/review', wrap(async (req, res) => {
   }
 
   res.status(201).send({ id: review.attrs.id })
+
+  emit(`product.${product.attrs.id}`, 'review-added', review.attrs)
+  emit(`product.${product.attrs.id}`, 'rating-updated', await product.getRating())
 }))
