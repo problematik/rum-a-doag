@@ -44,7 +44,13 @@ export class BaseModel {
   static create (attrs) {
     return this.db
       .insert(attrs)
-      .then(this._rowToClass.bind(this))
+      .then(id => {
+        if (id) {
+          return this.findOneBy({ id })
+        }
+
+        return null
+      })
   }
 
   static findBy (attrs) {
