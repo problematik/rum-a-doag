@@ -15,6 +15,15 @@ initHbs()
 app.use('/products', productsRouter)
 app.use('*', fallbackRouter)
 
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  let message = 'Something went wrong :/'
+  if (process.env.NODE_ENV !== 'production') {
+    message += `<br>${err.stack}`
+  }
+  res.status(500).send(message)
+})
+
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)
 }).on('error', err => {
