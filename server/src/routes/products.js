@@ -25,7 +25,12 @@ router.get('/:slug', wrap(async (req, res) => {
   render(res, {
     product: product.attrs,
     rating,
-    reviews: reviews.map(review => review.attrs)
+    reviews: reviews.map(review => {
+      return {
+        ...review.attrs,
+        rating: review.attrs.rating / 10
+      }
+    })
   })
 }))
 
@@ -35,10 +40,10 @@ router.post('/:id/review', wrap(async (req, res) => {
   const { rating, review: submittedReview } = req.body || {}
   const product = await Product.findOneBy({ id })
   if (!product) return res.sendStatus(404)
-  if (!rating || rating < 1 || rating > 5) {
+  if (!rating || rating < 0.5 || rating > 5) {
     return res.status(400).send({ error: 'Invalid rating value', errorCode: 1 })
   }
-  const review = await Review.create({ productId: id, rating, review: submittedReview || null })
+  const review = await Review.create({ productId: id, rating: rating * 10, review: submittedReview || null })
   if (!review) {
     console.error('Unable to create review')
     return res.status(500).send({ error: 'Unable to submit review. Try again later' })
