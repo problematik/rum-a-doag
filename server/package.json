@@ -12,7 +12,7 @@
   },
   "nodemonConfig": {
     "execMap": {
-      "js": "node -r dotenv/config"
+      "js": "DOTENV_CONFIG_PATH=../.env node -r dotenv/config"
     }
   },
   "devDependencies": {

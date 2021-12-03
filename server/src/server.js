@@ -5,7 +5,7 @@ import { router as productsRouter } from './routes/products.js'
 import { init as initHbs } from './utils/view.js'
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.SERVER_PORT
 
 app.set('view engine', 'hbs')
 app.set('views', resolve('./views'))
