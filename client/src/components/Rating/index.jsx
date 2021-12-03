@@ -24,16 +24,26 @@ export function StarRating ({ editable, rating, onClick }) {
 
   return (
     <span className={className}>
-      {starValues.map(value => <Star onClick={() => handleClick(value)} key={value} value={value} selected={rating > value - 1} editable={editable} />)}
+      {starValues.map(value => {
+        const selected = rating > value - 1
+        const isHalf = selected && rating < value
+        return <Star onClick={handleClick} key={value} value={value} selected={selected} isHalf={isHalf} editable={editable} />
+      })}
     </span>
   )
 }
 
-function Star ({ value, selected, editable, onClick }) {
+function Star ({ value, selected, editable, onClick, isHalf }) {
   const className = cs('star-icon', {
     selected: selected,
-    editable: editable
+    editable: editable,
+    half: isHalf
   })
+
+  const handleClick = (e) => {
+    const isHalf = e.target.getAttribute('class') === 'half'
+    onClick(isHalf ? value - 0.5 : value)
+  }
   return (
-    <span datavalue={value} className={className} dangerouslySetInnerHTML={{ __html: StarIcon }} onClick={onClick}/>)
+    <span datavalue={value} className={className} dangerouslySetInnerHTML={{ __html: StarIcon }} onClick={handleClick}/>)
 }

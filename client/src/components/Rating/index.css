@@ -1,6 +1,7 @@
 :root {
   --star-full: url(#starFull);
   --star-empty: url(#starEmpty);
+  --star-half: url(#starHalf);
 }
 
 .score {
@@ -24,10 +25,15 @@
 .star-icon path {
   fill: var(--star-empty);
   user-select: none;
+  pointer-events: none;
 }
 
-.star-icon.selected path {
+.star-icon.selected:not(.half) path {
   fill: var(--star-full);
+}
+
+.star-icon.selected.half path {
+  fill: var(--star-half);
 }
 
 .star-rating {
@@ -48,7 +54,11 @@
   fill: var(--star-empty);
 }
 
-.star-rating.editable .star-icon.editable:hover path,
+.star-rating.editable .star-icon.editable:hover rect.half:hover ~ path {
+  fill: var(--star-half);
+}
+
+.star-rating.editable .star-icon.editable:hover rect.full:hover ~ path,
 .star-icon.editable:hover ~ .star-icon path {
   fill: var(--star-full);
 }
