@@ -1,3 +1,8 @@
+import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
+
+let socket
+
 function getMeta (name) {
   const meta = document.head.querySelector(`meta[name="${name}"]`)
   if (!meta) throw new Error(`Meta ${name} element not found`)
@@ -39,4 +44,29 @@ export function submitReview (rating, review) {
       }
     })
   })
+}
+
+export function connectIO () {
+  socket = io({ transports: ['websocket'] })
+
+  socket.on('connect_error', (err) => {
+    console.log('Error connecting to socketio')
+    console.log(err)
+  })
+}
+
+export function useListen (room, eventName) {
+  const [message, setMessage] = useState(null)
+
+  useEffect(() => {
+    socket.emit('room', room)
+    socket.on(eventName, onMessage)
+    return () => { socket.off(eventName, onMessage) }
+  }, [])
+
+  function onMessage (message) {
+    setMessage(message)
+  }
+
+  return [message]
 }
