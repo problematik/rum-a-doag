@@ -33,9 +33,9 @@ router.post('/:id/review', wrap(async (req, res) => {
 
   const { rating, review: submittedReview } = req.body || {}
   const product = await Product.findOneBy({ id })
-  if (!product) return res.send(404)
+  if (!product) return res.sendStatus(404)
   if (!rating || rating < 1 || rating > 5) {
-    return res.status(400).send({ error: 'Invalid rating value' })
+    return res.status(400).send({ error: 'Invalid rating value', errorCode: 1 })
   }
   const review = await Review.create({ productId: id, rating, review: submittedReview || null })
   if (!review) {
