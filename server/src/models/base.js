@@ -23,6 +23,10 @@ export class BaseModel {
     return null
   }
 
+  static _rowsToClass (rows) {
+    return rows.map(row => new this(row))
+  }
+
   static findFirst () {
     return this.db
       .orderBy('createdAt', 'asc')
@@ -41,5 +45,12 @@ export class BaseModel {
     return this.db
       .insert(attrs)
       .then(this._rowToClass.bind(this))
+  }
+
+  static findBy (attrs) {
+    return this.db
+      .where(attrs)
+      .orderBy('id', 'desc')
+      .then(this._rowsToClass.bind(this))
   }
 }
