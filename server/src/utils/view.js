@@ -15,7 +15,8 @@ export function init () {
 
 export function render (res, opts = {}) {
   const viewOpts = {
-    ...opts
+    ...opts,
+    CLIENT_PORT: process.env.CLIENT_PORT
   }
   console.log('Rendering view', { viewOpts })
 

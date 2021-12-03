@@ -12,58 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
     <script type="module">
-      import RefreshRuntime from 'http://localhost:3001/@react-refresh'
+      import RefreshRuntime from 'http://localhost:{{ CLIENT_PORT }}/@react-refresh'
       RefreshRuntime.injectIntoGlobalHook(window)
       window.$RefreshReg$ = () => {}
       window.$RefreshSig$ = () => (type) => type
       window.__vite_plugin_react_preamble_installed__ = true
     </script>
-    <script type="module" src="http://localhost:3001/@vite/client"></script>
-    <script type="module" src="http://localhost:3001/main.jsx"></script>
+    <script type="module" src="http://localhost:{{ CLIENT_PORT }}/@vite/client"></script>
+    <script type="module" src="http://localhost:{{ CLIENT_PORT }}/main.jsx"></script>
   </head>
   <body class="wrapper">
     <div class="main-body" id="root">
-        <h1 class="primary">{{ product.title }}</h1>
-        <div class="score">
-          <div class="rating">
-            <span class="value">{{ rating }}</span>
-            {{> starRating rating=rating }}
-          </div>
-          <div>
-            <button id="add-review">Add review</button>
-          </div>
-        </div>
-        <hr class="divider"/>
-        {{#if reviews.length }}<h2 class="secondary">Reviews</h2>{{/if}}
-        <div class="reviews">
-          {{#if reviews.length }}
-            {{#each reviews }}
-              <div class="review">
-                <span class="stars">
-                  {{>starRating rating=rating }}
-                </span>
-                <span class="body">
-                  <span class="value">{{ rating }}</span>{{#if review }}<span class="text">, {{ review }}</span>{{/if}}
-                </span>
-              </div>
-            {{/each}}
-          {{else}}
-            No reviews yet.
-          {{/if}}
-        </div>
-
-        <div class="popup hidden">
-          <div class="body">
-            <div class="primary">What's your rating?</div>
-            <div class="tertiary">Rating</div>
-            {{> starRating editable=true rating=0 }}
-            <div class="tertiary">Review</div>
-            <textarea placeholder="Start typing..." rows="1"></textarea>
-            <div>
-              <button disabled>Submit review</button>
-            </div>
-          </div>
-        </div>
     </div>
   </body>
 </html>
