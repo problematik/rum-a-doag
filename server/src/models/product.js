@@ -15,6 +15,6 @@ export class Product extends BaseModel {
       return memo
     }, 0)
 
-    return reviews.length ? Math.round((ratings / reviews.length) * 10) / 10 : 0
+    return reviews.length ? Math.round((ratings / reviews.length) * 10) / 10 : '-'
   }
 }
