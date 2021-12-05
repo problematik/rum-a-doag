@@ -51,6 +51,6 @@ router.post('/:id/review', wrap(async (req, res) => {
 
   res.status(201).send({ id: review.attrs.id })
 
-  emit(`product.${product.attrs.id}`, 'review-added', review.attrs)
+  emit(`product.${product.attrs.id}`, 'review-added', review.toJSON())
   emit(`product.${product.attrs.id}`, 'rating-updated', await product.getRating())
 }))
